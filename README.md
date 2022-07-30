@@ -1,2 +1,2 @@
 # Docker
-Docker Compose Configs, that I use
+Docker Compose Configs that I use
