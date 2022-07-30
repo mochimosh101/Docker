@@ -1,0 +1,22 @@
+# This is for portainer-ce
+#
+# You should get Prompt to make a new login
+#
+version: '3.8'
+services:
+  portainer-ce:
+    ports:
+      - '9000:9000'
+      - '8000:8000'
+    container_name: portainer
+    networks:
+      - nginxproxymanager_default
+    restart: always
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/home/docker/portainer:/data'
+    image: 'portainer/portainer-ce:latest'
+
+networks:
+  nginxproxymanager_default:
+    external: true
