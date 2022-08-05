@@ -9,6 +9,8 @@ services:
   app:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
+    networks:
+      - proxy
     ports:
       - '80:80'
       - '81:81'
@@ -16,3 +18,7 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+  
+networks:
+  proxy:
+    external: true
