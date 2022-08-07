@@ -1,0 +1,19 @@
+version: '3.8'
+
+services: 
+  app:
+    image: 'ubuntu:22.04'
+    restart: always
+    networks:
+      - proxy
+    ports:
+      - '8001:443'
+      - '8002:2022'
+    volumes:
+      - /home/docker/ubuntu/home:/home
+      - /home/docker/ubuntu/etc:/etc
+      - /home/docker/ubuntu/var:/var
+
+networks:
+  proxy:
+    external: true

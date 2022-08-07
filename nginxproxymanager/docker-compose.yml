@@ -10,9 +10,16 @@ services:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
-      - '80:80'
-      - '81:81'
+      - '80:81'
       - '443:443'
     volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+      - /home/docker/data:/data
+      - /home/docker/letsencrypt:/etc/letsencrypt
+
+networks:
+   nginxproxy:
+     driver: bridge
+     ipam:
+       driver: default
+       config:
+         - subnet: 172.16.0.0/16
