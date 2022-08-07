@@ -2,21 +2,25 @@
 #
 # You should get Prompt to make a new login
 #
-version: '3.8'
+version: '3'
+
 services:
-  portainer-ce:
-    ports:
-      - '9000:9000'
-      - '8000:8000'
+  portainer:
+    image: portainer/portainer-ce
     container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     networks:
-      - nginxproxy
-    restart: always
+      - proxy
+    ports:
+      - "9000:9000"
+      - "8000:8000"
     volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
-      - '/home/docker/portainer:/data'
-    image: 'portainer/portainer-ce:latest'
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/username/portainer/data:/data
 
 networks:
-  nginxproxy:
+  proxy:
     external: true
