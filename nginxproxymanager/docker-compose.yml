@@ -9,6 +9,8 @@ services:
   app:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
+    networks:
+      - nginxproxy
     ports:
       - '80:81'
       - '443:443'

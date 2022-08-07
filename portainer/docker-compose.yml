@@ -12,7 +12,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      - proxy
+      - nginxproxy
     ports:
       - "9000:9000"
       - "8000:8000"
@@ -22,5 +22,5 @@ services:
       - /home/username/portainer/data:/data
 
 networks:
-  proxy:
+  nginxproxy:
     external: true
