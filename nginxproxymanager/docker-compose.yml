@@ -2,7 +2,7 @@
   #
   # These should be the defualt credentials
   # Email: admin@example.com
-  # Password:   
+  # Password: changeme
   #
   version: '3.1'
   services:
